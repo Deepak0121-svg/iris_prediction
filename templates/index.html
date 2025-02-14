@@ -1,0 +1,82 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Type Predictor</title>
+	
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+			background-color:"yellow";
+			
+			
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: "blue";
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <h2>Flower Type Predictor</h2>
+    <form action="/predict" method="post">
+	    <label for="Id">id:</label>
+        <input type="number" id="Id" name="Id" step="any" required><br>
+        <label for="sepal_length">Sepal Length:</label>
+        <input type="number" id="sepal_length" name="sepal_length" step="any" required><br>
+        <label for="sepal_width">Sepal Width:</label>
+        <input type="number" id="sepal_width" name="sepal_width" step="any" required><br>
+        <label for="petal_length">Petal Length:</label>
+        <input type="number" id="petal_length" name="petal_length" step="any" required><br>
+        <label for="petal_width">Petal Width:</label>
+        <input type="number" id="petal_width" name="petal_width" step="any" required><br>
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if result %}
+    <div class="result">
+        <h3>Prediction Result:</h3>
+        <p>The predicted flower type is: <strong>{{ result }}</strong></p>
+    </div>
+    {% endif %}
+</body>
+</html>
