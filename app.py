@@ -16,12 +16,12 @@ def home():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    Id = int(request.form['Id'])
+    #Id = int(request.form['Id'])
     sepal_length = float(request.form['sepal_length'])
     sepal_width = float(request.form['sepal_width'])
     petal_length = float(request.form['petal_length'])
     petal_width = float(request.form['petal_width'])
-    result = knn.predict([[Id,sepal_length, sepal_width, petal_length, petal_width]])[0]
+    result = knn.predict([[sepal_length, sepal_width, petal_length, petal_width]])[0]
     return render_template('index.html', result=result)
 
 if __name__ == '__main__':
